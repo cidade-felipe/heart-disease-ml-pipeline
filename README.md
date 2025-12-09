@@ -76,20 +76,26 @@ A estrutura pode variar, mas um formato típico para este tipo de pipeline é al
 ```text
 heart-disease-ml-pipeline/
 ├── data/
-│   ├── raw/           # Dados originais
-│   └── processed/     # Dados tratados
+│   └── csv/
+│       └── heart.csv
+├── figures/
 ├── notebooks/
-│   └── 01_heart_disease_pipeline.ipynb
-├── src/
-│   ├── preprocessing.py
-│   ├── training.py
-│   └── evaluation.py
-├── requirements.txt
-└── README.md
+│   ├── catboost_info/
+│   ├── analise_tratamento.ipynb
+│   ├── classificacao.ipynb
+│   ├── exploracao_analise.ipynb
+│   ├── pre_processamento_reducao_dimensionalidade.ipynb
+│   └── tratamento_classificacao.ipynb
+├── pkl/
+│   └── heart.pkl
+├── venv/
+├── .gitignore
+├── comparacao_red_dim.py
+├── LICENSE
+├── README.md
+└── requirements.txt
 ````
 
-Se o seu repositório não estiver exatamente assim, não tem problema,
-basta ajustar esta seção para refletir a organização atual do projeto.
 
 ---
 
