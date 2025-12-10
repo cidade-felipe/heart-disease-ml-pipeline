@@ -133,7 +133,8 @@ pip install pandas numpy scikit-learn matplotlib seaborn jupyter
 jupyter notebook
 ```
 
-Abra o notebook principal (por exemplo, `01_heart_disease_pipeline.ipynb`) e execute as células na ordem.
+Abra o notebook `exploracao_analise_e_tratamento.ipynb` e execute as células na ordem, afim de realizar a ánalise e tratamento dos dados.  
+Em seguida, faça o mesmo com o notebook `classificacao.ipynb`, para realizar o treinamento dos modelos.
 
 ---
 
