@@ -81,13 +81,9 @@ heart-disease-ml-pipeline/
 ├── figures/
 ├── notebooks/
 │   ├── catboost_info/
-│   ├── analise_tratamento.ipynb
 │   ├── classificacao.ipynb
-│   ├── exploracao_analise.ipynb
-│   ├── pre_processamento_reducao_dimensionalidade.ipynb
-│   └── tratamento_classificacao.ipynb
-├── pkl/
-│   └── heart.pkl
+│   ├── exploracao_analise_e_tratamento.ipynb
+│   └── pre_processamento_reducao_dimensionalidade.ipynb
 ├── venv/
 ├── .gitignore
 ├── comparacao_red_dim.py
