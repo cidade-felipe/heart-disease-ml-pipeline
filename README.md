@@ -40,12 +40,12 @@ Comparar algoritmos clássicos e de boosting para identificar a melhor combinaç
 
 ### Mapa rápido
 
-| Bloco | Função |
-|---|---|
-| `data/csv/` | dados brutos e versão tratada |
-| `notebooks/` | EDA, pré-processamento e classificação |
-| `figures/` | gráficos de comparação dos modelos |
-| `pkl/` | artefatos serializados |
+| Bloco                     | Função                                         |
+| ------------------------- | ------------------------------------------------ |
+| `data/csv/`             | dados brutos e versão tratada                   |
+| `notebooks/`            | EDA, pré-processamento e classificação        |
+| `figures/`              | gráficos de comparação dos modelos            |
+| `pkl/`                  | artefatos serializados                           |
 | `comparacao_red_dim.py` | script auxiliar de redução de dimensionalidade |
 
 ### Estrutura de pastas
@@ -115,31 +115,31 @@ Fonte dos valores: `figures/train_test_accuracy.png`, `figures/model_hits_test.p
 
 ### 1) Acurácia (Treino/Teste) e Acertos no Teste
 
-| Modelo | Acurácia Treino/Teste (%) | Acertos no Teste |
-|---|---:|---:|
-| Naive Bayes | 84.78 | 234 |
-| SVC | 85.61 | 238 |
-| Regressão Logística | 85.83 | 238 |
-| KNN | 85.83 | 234 |
-| Árvore de Decisão | 81.13 | 223 |
-| Random Forest | 86.06 | 234 |
-| XGBoost | 87.04 | 237 |
-| LightGBM | 86.84 | 234 |
-| CatBoost | **86.96** | **240** |
+| Modelo                | Acurácia Treino/Teste (%) | Acertos no Teste |
+| --------------------- | -------------------------: | ---------------: |
+| Naive Bayes           |                      84.78 |              234 |
+| SVC                   |                      85.61 |              238 |
+| Regressão Logística |                      85.83 |              238 |
+| KNN                   |                      85.83 |              234 |
+| Árvore de Decisão   |                      81.13 |              223 |
+| Random Forest         |                      86.06 |              234 |
+| XGBoost               |                      87.04 |              237 |
+| LightGBM              |                      86.84 |              234 |
+| **CatBoost**         |            **86.96** |    **240** |
 
 ### 2) Acurácia Média em Validação Cruzada (KFold=30)
 
-| Modelo | Acurácia CV (%) |
-|---|---:|
-| Naive Bayes | 84.78 |
-| SVC | 85.61 |
-| Regressão Logística | 85.83 |
-| KNN | 85.83 |
-| Árvore de Decisão | 81.13 |
-| Random Forest | 86.06 |
-| XGBoost | 87.04 |
-| LightGBM | 86.84 |
-| CatBoost | **87.70** |
+| Modelo                | Acurácia CV (%) |
+| --------------------- | ---------------: |
+| Naive Bayes           |            84.78 |
+| SVC                   |            85.61 |
+| Regressão Logística |            85.83 |
+| KNN                   |            85.83 |
+| Árvore de Decisão   |            81.13 |
+| Random Forest         |            86.06 |
+| XGBoost               |            87.04 |
+| LightGBM              |            86.84 |
+| **CatBoost**         |  **87.70** |
 
 ### Destaques
 
