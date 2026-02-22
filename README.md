@@ -1,184 +1,207 @@
 # Heart Disease ML Pipeline
 
-Pipeline de machine learning para análise e predição de risco de doença cardíaca, passando por todo o fluxo de trabalho de ciência de dados, da preparação dos dados até a avaliação e comparação de modelos.
-
 <div align="center">
 
-![Status](https://img.shields.io/badge/status-estável-brightgreen)
+![Status](https://img.shields.io/badge/status-ativo-success)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![Task](https://img.shields.io/badge/ml-binary%20classification-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Python](https://img.shields.io/badge/python-3.x-blue)
-![ML](https://img.shields.io/badge/machine%20learning-classificação-red)
+
+Pipeline completo de ciência de dados para predição de risco de doença cardíaca.
 
 </div>
 
----
+## Visão Geral
 
-## 🎯 Objetivo
+Este repositório implementa um fluxo end-to-end de machine learning para classificação binária da variável `HeartDisease`, cobrindo:
 
-Este projeto foi criado para estudar um problema real de saúde usando machine learning, praticando o pipeline completo de ciência de dados.  
-A ideia é sair do clássico “rodar um modelo” e ir além, incluindo análise exploratória, preparação dos dados, comparação de algoritmos e visualização dos resultados.
+- exploração e tratamento dos dados
+- pré-processamento e engenharia de atributos
+- treinamento de múltiplos modelos
+- comparação por acurácia, acertos e validação cruzada
 
-O foco não é só acertar o maior número de previsões, mas entender o comportamento dos dados e dos modelos.
+## Objetivo
 
----
+Comparar algoritmos clássicos e de boosting para identificar a melhor combinação entre desempenho e estabilidade em um problema real de saúde.
 
-## 🧠 O que o projeto faz
+## Dataset
 
-De forma geral, o pipeline segue estes passos:
+- Base original: `data/csv/heart.csv`
+- Base tratada: `data/csv/processed/heart_tratado.csv`
+- Registros: **917**
+- Colunas: **12** (11 features + 1 alvo)
+- Alvo: `HeartDisease` (`0` = ausência, `1` = presença)
 
-1. Carrega e organiza o dataset de doença cardíaca  
-2. Faz limpeza e preparação dos dados  
-3. Explora as variáveis com estatísticas e gráficos  
-4. Cria, treina e avalia modelos de classificação  
-5. Compara o desempenho dos modelos  
-6. Gera gráficos para interpretar os resultados
+### Features
 
-Dependendo da versão do projeto, os modelos podem incluir, por exemplo:
+`Age`, `Sex`, `ChestPainType`, `RestingBP`, `Cholesterol`, `FastingBS`, `RestingECG`, `MaxHR`, `ExerciseAngina`, `Oldpeak`, `ST_Slope`.
 
-- Regressão logística  
-- KNN  
-- Random Forest  
-- Outros classificadores do scikit-learn
+## Arquitetura do Projeto
 
----
+### Mapa rápido
 
-## 📊 Dataset
+| Bloco | Função |
+|---|---|
+| `data/csv/` | dados brutos e versão tratada |
+| `notebooks/` | EDA, pré-processamento e classificação |
+| `figures/` | gráficos de comparação dos modelos |
+| `pkl/` | artefatos serializados |
+| `comparacao_red_dim.py` | script auxiliar de redução de dimensionalidade |
 
-O projeto utiliza um dataset clássico de doença cardíaca, com variáveis clínicas e alvo binário indicando presença ou ausência de doença.  
-Exemplos de tipos de atributos presentes:
-
-- Idade  
-- Pressão arterial em repouso  
-- Colesterol  
-- Frequência cardíaca máxima  
-- Tipo de dor no peito  
-- Outras variáveis clínicas relevantes
-
-Se você quiser trocar o dataset por outro, basta manter a mesma ideia geral:  
-um conjunto de atributos numéricos/categóricos e uma coluna alvo binária.
-
----
-
-## 🛠️ Tecnologias utilizadas
-
-- Python  
-- Pandas, NumPy  
-- Scikit-learn  
-- Matplotlib e, se usado, Seaborn  
-- Jupyter Notebook
-
----
-
-## 🗂️ Estrutura do projeto
-
-A estrutura pode variar, mas um formato típico para este tipo de pipeline é algo assim:
+### Estrutura de pastas
 
 ```text
 heart-disease-ml-pipeline/
-├── data/
-│   └── csv/
-│       └── heart.csv
-├── figures/
-├── notebooks/
-│   ├── catboost_info/
-│   ├── classificacao.ipynb
-│   ├── exploracao_analise_e_tratamento.ipynb
-│   └── pre_processamento_reducao_dimensionalidade.ipynb
-├── venv/
-├── .gitignore
-├── comparacao_red_dim.py
-├── LICENSE
-├── README.md
-└── requirements.txt
-````
+|-- data/
+|   |-- csv/
+|       |-- heart.csv
+|       |-- processed/
+|           |-- heart_tratado.csv
+|-- figures/
+|   |-- train_test_accuracy.png
+|   |-- cv_accuracy.png
+|   |-- model_hits_test.png
+|-- notebooks/
+|   |-- exploracao_analise_e_tratamento.ipynb
+|   |-- pre_processamento_reducao_dimensionalidade.ipynb
+|   |-- classificacao.ipynb
+|   |-- catboost_info/
+|-- pkl/
+|-- comparacao_red_dim.py
+|-- requirements.txt
+|-- README.md
+```
 
+## Fluxo dos Notebooks
 
----
+### `notebooks/exploracao_analise_e_tratamento.ipynb`
 
-## 📦 Como executar o projeto
+- leitura e inspeção inicial do dataset
+- estatística descritiva e análise de distribuição
+- tratamento de inconsistências (ex.: zeros em variáveis clínicas)
+- consolidação da base para modelagem
 
-### 1. Clonar o repositório
+### `notebooks/pre_processamento_reducao_dimensionalidade.ipynb`
+
+- codificação de variáveis categóricas
+- separação entre previsores e alvo
+- escalonamento e normalização
+- expansão com `OneHotEncoder`
+- experimentos de redução de dimensionalidade
+
+### `notebooks/classificacao.ipynb`
+
+- split treino/teste (`70/30`, `random_state=12`)
+- treinamento de modelos supervisionados
+- avaliação com métricas e matrizes de confusão
+- validação cruzada com `KFold (30)`
+- geração dos gráficos finais em `figures/`
+
+## Modelos Avaliados
+
+- Naive Bayes
+- SVC
+- Regressão Logística
+- KNN
+- Árvore de Decisão
+- Random Forest
+- XGBoost
+- LightGBM
+- CatBoost
+
+## Resultados
+
+Fonte dos valores: `figures/train_test_accuracy.png`, `figures/model_hits_test.png` e `figures/cv_accuracy.png`.
+
+### 1) Acurácia (Treino/Teste) e Acertos no Teste
+
+| Modelo | Acurácia Treino/Teste (%) | Acertos no Teste |
+|---|---:|---:|
+| Naive Bayes | 84.78 | 234 |
+| SVC | 85.61 | 238 |
+| Regressão Logística | 85.83 | 238 |
+| KNN | 85.83 | 234 |
+| Árvore de Decisão | 81.13 | 223 |
+| Random Forest | 86.06 | 234 |
+| XGBoost | 87.04 | 237 |
+| LightGBM | 86.84 | 234 |
+| CatBoost | **86.96** | **240** |
+
+### 2) Acurácia Média em Validação Cruzada (KFold=30)
+
+| Modelo | Acurácia CV (%) |
+|---|---:|
+| Naive Bayes | 84.78 |
+| SVC | 85.61 |
+| Regressão Logística | 85.83 |
+| KNN | 85.83 |
+| Árvore de Decisão | 81.13 |
+| Random Forest | 86.06 |
+| XGBoost | 87.04 |
+| LightGBM | 86.84 |
+| CatBoost | **87.70** |
+
+### Destaques
+
+- Melhor acurácia em validação cruzada: **CatBoost (87.70%)**
+- Maior número de acertos no teste: **CatBoost (240)**
+- Modelos de boosting (XGBoost/LightGBM/CatBoost) dominaram o topo do ranking
+
+## Gráficos
+
+- `figures/train_test_accuracy.png`: comparação de acurácia dos modelos
+- `figures/cv_accuracy.png`: acurácia média em validação cruzada
+- `figures/model_hits_test.png`: número total de acertos no conjunto de teste
+
+## Como Executar
+
+### 1. Clonar o projeto
 
 ```bash
 git clone https://github.com/cidade-felipe/heart-disease-ml-pipeline.git
 cd heart-disease-ml-pipeline
 ```
 
-### 2. Criar ambiente virtual (opcional, mas recomendado)
+### 2. Criar e ativar ambiente virtual
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate   # Linux / macOS
-# ou
-.\.venv\Scripts\activate    # Windows
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+# Linux/macOS
+source .venv/bin/activate
 ```
 
 ### 3. Instalar dependências
-
-Se existir um arquivo `requirements.txt`, execute:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Caso contrário, instale manualmente as principais bibliotecas:
-
-```bash
-pip install pandas numpy scikit-learn matplotlib seaborn jupyter
-```
-
-### 4. Rodar o notebook
+### 4. Rodar os notebooks
 
 ```bash
 jupyter notebook
 ```
 
-Abra o notebook `exploracao_analise_e_tratamento.ipynb` e execute as células na ordem, afim de realizar a ánalise e tratamento dos dados.  
-Em seguida, faça o mesmo com o notebook `classificacao.ipynb`, para realizar o treinamento dos modelos.
+Ordem sugerida:
 
----
+1. `notebooks/exploracao_analise_e_tratamento.ipynb`
+2. `notebooks/pre_processamento_reducao_dimensionalidade.ipynb`
+3. `notebooks/classificacao.ipynb`
 
-## 📈 Resultados e métricas
+## Próximos Passos
 
-Os resultados típicos incluem:
+- consolidar o pipeline em scripts modulares
+- adicionar rastreamento de experimentos (MLflow)
+- ampliar métricas: ROC-AUC, PR-AUC e calibração
+- empacotar o melhor modelo em API de inferência
 
-* Acurácia em treino e teste
-* Matriz de confusão
-* Outras métricas relevantes, como precisão, revocação e F1-score
-* Gráficos comparando o desempenho dos modelos
+## Licença
 
-Você pode adicionar aqui:
+Distribuído sob licença MIT. Consulte `LICENSE`.
 
-* Imagens de gráficos de acurácia
-* Prints da matriz de confusão
-* Qual modelo teve melhor equilíbrio entre acerto e generalização
+## Autor
 
-Exemplo de trecho descritivo que você pode completar depois:
-
-> Nos testes realizados, os modelos X e Y apresentaram desempenho semelhante,
-> com destaque para o modelo Z, que manteve boa acurácia em teste e bom equilíbrio entre classes.
-
----
-
-## 🚀 Próximos passos e melhorias
-
-Algumas ideias de evolução do projeto:
-
-* Adicionar validação cruzada mais robusta
-* Testar técnicas de balanceamento de classes, se necessário
-* Incluir métodos de explicabilidade de modelos (por exemplo, SHAP ou LIME)
-* Organizar o código em módulos reutilizáveis fora do notebook
-* Criar uma API simples para exposição do modelo
-
----
-
-## 👨‍💻 Autor
-
-**Felipe Cidade**
-
----
-
-## 📄 Licença
-
-Este projeto está licenciado sob a licença MIT.
-Veja o arquivo `LICENSE` para mais detalhes.
+- Felipe Cidade Soares
+- Linkedin: [https://www.linkedin.com/in/cidadefelipe/](https://www.linkedin.com/in/cidadefelipe/)
