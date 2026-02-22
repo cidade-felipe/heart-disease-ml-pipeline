@@ -113,10 +113,10 @@ heart-disease-ml-pipeline/
 
 Fonte dos valores: `figures/train_test_accuracy.png`, `figures/model_hits_test.png` e `figures/cv_accuracy.png`.
 
-### 1) Acurácia (Treino/Teste) e Acertos no Teste
+### Acurácia e Acertos no Teste
 
 | Modelo                | Acurácia Treino/Teste (%) | Acertos no Teste |
-| --------------------- | -------------------------: | ---------------: |
+| :-------------------- | -------------------------: | ---------------: |
 | Naive Bayes           |                      84.78 |              234 |
 | SVC                   |                      85.61 |              238 |
 | Regressão Logística |                      85.83 |              238 |
@@ -125,25 +125,11 @@ Fonte dos valores: `figures/train_test_accuracy.png`, `figures/model_hits_test.p
 | Random Forest         |                      86.06 |              234 |
 | XGBoost               |                      87.04 |              237 |
 | LightGBM              |                      86.84 |              234 |
-| **CatBoost**         |            **86.96** |    **240** |
-
-### 2) Acurácia Média em Validação Cruzada (KFold=30)
-
-| Modelo                | Acurácia CV (%) |
-| --------------------- | ---------------: |
-| Naive Bayes           |            84.78 |
-| SVC                   |            85.61 |
-| Regressão Logística |            85.83 |
-| KNN                   |            85.83 |
-| Árvore de Decisão   |            81.13 |
-| Random Forest         |            86.06 |
-| XGBoost               |            87.04 |
-| LightGBM              |            86.84 |
-| **CatBoost**         |  **87.70** |
+| **CatBoost**    |            **86.96** |    **240** |
 
 ### Destaques
 
-- Melhor acurácia em validação cruzada: **CatBoost (87.70%)**
+- Melhor acurácia: **CatBoost (87.70%)**
 - Maior número de acertos no teste: **CatBoost (240)**
 - Modelos de boosting (XGBoost/LightGBM/CatBoost) dominaram o topo do ranking
 
