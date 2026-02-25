@@ -111,27 +111,39 @@ heart-disease-ml-pipeline/
 
 ## Resultados
 
-Fonte dos valores: `figures/train_test_accuracy.png`, `figures/model_hits_test.png` e `figures/cv_accuracy.png`.
+Fonte dos valores: `figures/train_test_accuracy.png`, `figures/model_hits_test.png`, `figures/cv_accuracy.png` e métricas extraídas de `notebooks/classificacao.ipynb`.
 
-### Acurácia e Acertos no Teste
+A análise comparou nove algoritmos de classificação aplicados ao problema de predição de doença cardíaca. A avaliação considerou quatro métricas principais: acurácia, número absoluto de acertos no conjunto de teste, F1-score e recall. O objetivo foi observar não apenas o desempenho bruto, mas também o equilíbrio entre precisão geral e capacidade de identificar corretamente os casos positivos.
 
-| Modelo                | Acurácia Treino/Teste (%) | Acertos no Teste |
-| :-------------------- | -------------------------: | ---------------: |
-| Naive Bayes           |                      84.78 |              234 |
-| SVC                   |                      85.61 |              238 |
-| Regressão Logística |                      85.83 |              238 |
-| KNN                   |                      85.83 |              234 |
-| Árvore de Decisão   |                      81.13 |              223 |
-| Random Forest         |                      86.06 |              234 |
-| XGBoost               |                      87.04 |              237 |
-| LightGBM              |                      86.84 |              234 |
-| **CatBoost**    |            **86.96** |    **240** |
+### Tabela Comparativa dos Resultados
 
-### Destaques
+| Modelo | Acurácia (%) | Acertos no Teste | F1 | Recall |
+| :----- | -----------: | ---------------: | -: | -----: |
+| Naive Bayes | 85.17 | 234 | 0.86 | 0.86 |
+| SVC | 85.61 | 238 | 0.88 | 0.90 |
+| Regressão Logística | 85.83 | 238 | 0.88 | 0.88 |
+| KNN | 85.83 | 234 | 0.87 | 0.88 |
+| Árvore de Decisão | 81.13 | 223 | 0.83 | 0.83 |
+| Random Forest | 86.06 | 234 | 0.86 | 0.86 |
+| XGBoost | 87.04 | 237 | 0.88 | 0.89 |
+| LightGBM | 86.84 | 234 | 0.87 | 0.88 |
+| CatBoost | 87.70 | 240 | 0.88 | 0.88 |
 
-- Melhor acurácia: **CatBoost (87.70%)**
-- Maior número de acertos no teste: **CatBoost (240)**
-- Modelos de boosting (XGBoost/LightGBM/CatBoost) dominaram o topo do ranking
+### Interpretação Geral
+
+Os resultados mostram consistência entre as métricas dos modelos com melhor desempenho. CatBoost, XGBoost e LightGBM formam o grupo mais forte, com alta acurácia e bons valores de F1 e recall, indicando equilíbrio entre acertos gerais e detecção da classe positiva.
+
+O CatBoost apresentou o melhor resultado global, com **87.70% de acurácia** e **240 acertos**, mantendo **F1 = 0.88** e **Recall = 0.88**. Esse comportamento sugere boa capacidade de generalização e estabilidade no desempenho.
+
+O XGBoost ficou muito próximo, com **87.04% de acurácia**, **237 acertos**, **F1 = 0.88** e **Recall = 0.89**, enquanto o LightGBM também se manteve competitivo (**86.84%**, **F1 = 0.87**, **Recall = 0.88**).
+
+Entre os modelos clássicos, o SVC se destacou por atingir o maior recall (**0.90**), sendo o mais sensível para identificar casos positivos. Regressão Logística e KNN apresentaram desempenho sólido e equilibrado, com resultados próximos entre si.
+
+Naive Bayes e Random Forest ficaram em nível intermediário, com desempenho competitivo, porém abaixo dos melhores modelos de boosting. A Árvore de Decisão registrou os menores valores em todas as métricas, reforçando que, neste cenário, sua principal utilidade é interpretativa, e não maximização de performance.
+
+### Conclusão
+
+Para este conjunto de dados, o **CatBoost** apresentou o melhor equilíbrio geral entre acurácia, acertos absolutos e qualidade de classificação. **XGBoost** e **LightGBM** também mostraram desempenho de alto nível e se configuram como alternativas robustas. Se a prioridade for aumentar a detecção de positivos, o **SVC** ganha relevância pelo recall superior.
 
 ## Gráficos
 
