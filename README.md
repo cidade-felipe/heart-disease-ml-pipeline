@@ -117,17 +117,17 @@ A análise comparou nove algoritmos de classificação aplicados ao problema de 
 
 ### Tabela Comparativa dos Resultados
 
-| Modelo | Acurácia (%) | Acertos no Teste | F1 | Recall |
-| :----- | -----------: | ---------------: | -: | -----: |
-| Naive Bayes | 85.17 | 234 | 0.86 | 0.86 |
-| SVC | 85.61 | 238 | 0.88 | 0.90 |
-| Regressão Logística | 85.83 | 238 | 0.88 | 0.88 |
-| KNN | 85.83 | 234 | 0.87 | 0.88 |
-| Árvore de Decisão | 81.13 | 223 | 0.83 | 0.83 |
-| Random Forest | 86.06 | 234 | 0.86 | 0.86 |
-| XGBoost | 87.04 | 237 | 0.88 | 0.89 |
-| LightGBM | 86.84 | 234 | 0.87 | 0.88 |
-| CatBoost | 87.70 | 240 | 0.88 | 0.88 |
+| Modelo                | Acurácia (%) | Acertos no Teste |        F1 |    Recall |
+| :-------------------- | ------------: | ---------------: | --------: | --------: |
+| Naive Bayes           |         85.17 |              234 |      0.86 |      0.86 |
+| SVC                   |         85.61 |              238 |      0.88 |      0.90 |
+| Regressão Logística |         85.83 |              238 |      0.88 |      0.88 |
+| KNN                   |         85.83 |              234 |      0.87 |      0.88 |
+| Árvore de Decisão   |         81.13 |              223 |      0.83 |      0.83 |
+| Random Forest         |         86.06 |              234 |      0.86 |      0.86 |
+| XGBoost               |         87.04 |              237 |      0.88 |      0.89 |
+| LightGBM              |         86.84 |              234 |      0.87 |      0.88 |
+| **CatBoost**         |    **87.70** |         **240** | **0.88** | **0.88** |
 
 ### Interpretação Geral
 
